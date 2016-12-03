@@ -15,6 +15,7 @@
 + Python 3.5.2
 + Flask Python Package
 + TensorFlow Python Package
++ Twython Python Package
 + Ngrok (temporary, for tunelling local server to the internet)
 
 ###Running the bot
