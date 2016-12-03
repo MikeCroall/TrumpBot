@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TrumpBot Page Interaction</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- Custom JS -->
+		<script src="chat.js"></script>
+	</head>
+	<body>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Chat with TrumpBot</h1>
+				<p>This is not affiliated with Donald Trump, or the Trump Presidential Campaign</p>
+			</div>
+		</div>
+		<div class="container">
+			<div id="chat-box">
+			</div>
+
+			<form>
+				<input id="chat-message" type="text" class="form-control" placeholder="Message Here"/>
+				<input type="button" class="btn btn-default" value="Chat!" onClick="addChat()">
+			</form>
+		</div>
+
+
+	</body>
+
+</html>
