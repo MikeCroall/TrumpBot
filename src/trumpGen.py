@@ -8,8 +8,12 @@ from tflearn.data_utils import *
 class TrumpGenerator(object):
 	def __init__(self):
 		self.maxLength = 10
+		self.path = "tweets.txt"
 
 	def train(self):
+		char_idx = None
+		X, Y, char_idx = textfile_to_semi_redundant_sequences(self.path,seq_maxlen=self.maxLength,redun_step=3)
+
 		g = tflearn.input_data([None,self.maxLength,len(char_idx)]);
 		g = tflearn.lstm(g,512,return_seq=True)
 		g = tflearn.dropout(g,0.5)
@@ -26,4 +30,10 @@ class TrumpGenerator(object):
 
 	def getResponse(self,input="wall"):
 		m.fit(X,Y,validation_set=0.1,batch_size=128,n_epoch=1,run_id='trumpedupkicks')
-		m.generate(600,temperature=1.0,seq_seed=input)
+		return m.generate(600,temperature=1.0,seq_seed=input)
+
+if __name__ == "__main__":
+	tg = TrumpGenerator()
+	tg.train()
+	print(tg.getResponse())
+
