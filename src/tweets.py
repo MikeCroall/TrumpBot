@@ -28,7 +28,7 @@ for i in range(0, 16):  ## iterate through all tweets
     if len(user_timeline) == 0:
         print("\n\nTERMINATED DUE TO NO MORE TWEETS \n\n")
         break
-    time.sleep(300)  ## 5 minute rest between api calls
+    time.sleep(61)#300)  ## 5 minute rest between api calls
 
     for tweet in user_timeline:
         tweetDict[tweet['id']] = tweet['text']
@@ -39,7 +39,7 @@ print("Last tweet ID: " + str(tweetIDs[-1]))
 
 toWrite = json.dumps({
     "lastId": tweetIDs[-1],
-    "tweets": json.dumps(tweetDict)
+    "tweets": tweetDict
 })
 
 file = open(fileName, 'w')
