@@ -11,8 +11,7 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<!-- Angular JS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<!-- Custom JS -->
 		<script src="chat.js"></script>
 	</head>
 	<body>
@@ -23,14 +22,12 @@
 			</div>
 		</div>
 		<div class="container">
-			<div ng-app="chatDisplay" ng-controller="chatCtrl">
-				<!-- TODO: refactor into a separate file -->
-				<div ng-repeat="x in records"> {{x}}</div>
+			<div id="chat-box">
 			</div>
 
-			<form ng-controller="chatCtrl">
-				<input type="text" ng-model="message" class="form-control" placeholder="Message Here"/>
-				<input type="button" class="btn btn-default" value="Chat!" ng-click="addChat(message)">
+			<form>
+				<input id="chat-message" type="text" class="form-control" placeholder="Message Here"/>
+				<input type="button" class="btn btn-default" value="Chat!" onClick="addChat()">
 			</form>
 		</div>
 
