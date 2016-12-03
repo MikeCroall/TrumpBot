@@ -9,7 +9,16 @@ Goals
 + Android App wrapper for API calls (eventually...)
 
 
+Dependencies
++ Python 3.5.2
++ Flask Python Package
++ TensorFlow Python Package
++ Ngrok
+
 Running the bot
-On Linux (and maybe Mac), simply open terminal, navigate to the folder where `run.sh` is located, and use the following commmand
-    
+On Linux (and maybe Mac), simply open terminal, navigate to the folder where `run.sh` is located
+```$ cd /path/to/server/```
+Make sure run.sh is executable (note: this requires root)
+```$ chmod +x run.sh
+Finally, run the script    
 ```$ ./run.sh```
