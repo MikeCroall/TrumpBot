@@ -6,13 +6,13 @@ app = Flask(__name__)
 @app.route("/", methods=['GET','POST'])
 def respondToPerson():
 	fromContact = request.values.get('From',None);
-	
+	inputMessage = request.values.get('Body',None);	
 	#get a response from the Trump API
 
 
 	#send info to the person
 	resp = twilio.twiml.Response()
-	resp.message("hello")
+	resp.message(inputMessage)
 
 	return str(resp)
 
