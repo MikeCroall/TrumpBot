@@ -92,3 +92,5 @@ ENV/
 
 # PyCharm
 .idea/
+
+twilio.txt

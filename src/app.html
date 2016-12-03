@@ -13,7 +13,7 @@
 
 		<!-- Angular JS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-
+		<script src="chat.js"></script>
 	</head>
 	<body>
 		<div class="jumbotron">
@@ -25,12 +25,13 @@
 		<div class="container">
 			<div ng-app="chatDisplay" ng-controller="chatCtrl">
 				<!-- TODO: refactor into a separate file -->
-				<script>
-					app.controller("chatCtrl", function($scope) {
-						$scope.records = []
-					});
-				</script>
+				<div ng-repeat="x in records"> {{x}}</div>
 			</div>
+
+			<form ng-controller="chatCtrl">
+				<input type="text" ng-model="message" class="form-control" placeholder="Message Here"/>
+				<input type="button" class="btn btn-default" value="Chat!" ng-click="addChat(message)">
+			</form>
 		</div>
 
 
