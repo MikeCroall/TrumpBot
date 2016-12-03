@@ -13,7 +13,7 @@
 + Python 3.5.2
 + Flask Python Package
 + TensorFlow Python Package
-+ Ngrok
++ Ngrok (temporary, for tunelling local server to the internet)
 
 ###Running the bot
 On Linux, simply open terminal, navigate to the folder where `run.sh` is located
