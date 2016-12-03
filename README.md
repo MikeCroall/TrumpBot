@@ -3,6 +3,8 @@
 
 ###Goals
 + API that receives a string, returns a string response in the style of Donald Trump
+--* /response will return a Trump style statement.
+--* /response?q=Query will return Trump's thoughts on your Query
 + Automatically determine Donald Trump's style via tweet analysis (TensorFlow)
 + Text message wrapper for API calls (Twilio)
 + Web wrapper for API calls
