@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TrumpBot Page Interaction</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- Angular JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+	</head>
+	<body>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Chat with TrumpBot</h1>
+				<p>This is not affiliated with Donald Trump, or the Trump Presidential Campaign</p>
+			</div>
+		</div>
+		<div class="container">
+			<div ng-app="chatDisplay" ng-controller="chatCtrl">
+				<!-- TODO: refactor into a separate file -->
+				<script>
+					app.controller("chatCtrl", function($scope) {
+						$scope.records = []
+					});
+				</script>
+			</div>
+		</div>
+
+
+	</body>
+
+</html>
