@@ -10,6 +10,9 @@
 + Web wrapper for API calls
 + Android App wrapper for API calls (eventually...)
 
+API Functionality
++ Train Neural Network
++ getResponse : input string -> output string
 
 ###Dependencies
 + Python 3.5.2
