@@ -1,7 +1,7 @@
 # TrumpBot
 ## A chat bot to emulate Donald Trump's speech
 
-Goals
+###Goals
 + API that receives a string, returns a string response in the style of Donald Trump
 + Automatically determine Donald Trump's style via tweet analysis (TensorFlow)
 + Text message wrapper for API calls (Twilio)
@@ -9,16 +9,22 @@ Goals
 + Android App wrapper for API calls (eventually...)
 
 
-Dependencies
+###Dependencies
 + Python 3.5.2
 + Flask Python Package
 + TensorFlow Python Package
 + Ngrok
 
-Running the bot
-On Linux (and maybe Mac), simply open terminal, navigate to the folder where `run.sh` is located
-```$ cd /path/to/server/```
+###Running the bot
+On Linux, simply open terminal, navigate to the folder where `run.sh` is located
+```
+$ cd /path/to/server/
+```
 Make sure run.sh is executable (note: this requires root)
-```$ chmod +x run.sh
+```
+$ chmod +x run.sh
+```
 Finally, run the script    
-```$ ./run.sh```
+```
+$ ./run.sh
+```
