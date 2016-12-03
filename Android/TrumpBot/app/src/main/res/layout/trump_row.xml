@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textLayout"
+        android:layout_alignEnd="@+id/textLayout"
+        android:layout_alignStart="@+id/textLayout"
+        android:layout_alignTop="@+id/textLayout"
+        android:scaleType="fitXY"
+        android:src="@drawable/america_banner" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/textLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_text"
+            android:textColor="@color/DarkOrange"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/sample_text"
+            android:textColor="@color/White"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
