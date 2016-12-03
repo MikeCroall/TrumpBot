@@ -3,6 +3,7 @@ from trumpGen import TrumpGenerator
 import re
 import random
 import sys
+import string
 
 app = Flask(__name__)
 tg = None
@@ -20,17 +21,25 @@ def root():
 @app.route('/response', methods=['GET','POST'])
 def getResponse():
 	if(request.args.get('q') != None):
-		return tg.getResponse(request.args.get('q'))
+		return tg.getResponse(processInput(request.args.get('q')))
 	else:
 		#generate random trump sentence statically
 		return tg.getResponse()
 
 def processInput(inputStr):
 	#strip punctuation
-
+	inputStr.translate(string.punctuation)
 	#remove stop words
+	for w in stopList:
+		inputStr.replace(w,"")
 
+	#remove excess spaces
+	re.sub('\s+',' ', inputStr).strip() #hehe
 	#pick a random word
+	startWord = random.choice(inputStr.split(" "))
+	if(startWord is None):
+		return "Wall"
+	return startWord
 
 if __name__ == '__main__':
 	run_on_start()

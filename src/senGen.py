@@ -88,6 +88,10 @@ class SentenceGenerator(object):
         curr = startWord
         sent = curr.capitalize()
         prevList = [curr]
+        if(len(self.next([curr])) == 0):
+            curr = "wall"
+            sent = "WALL"
+            prevList = [curr]
         # Keep adding words until we hit a period
         while (curr not in "."):
             curr = self.next(prevList)
