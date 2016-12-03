@@ -71,9 +71,11 @@ class SentenceGenerator(object):
         retval = ""
         index = random.random()
         # Shorten prevList until it's in mapping
-        while self.toHashKey(prevList) not in self.mapping:
+        while self.toHashKey(prevList) not in self.mapping and len(prevList) != 0:
             prevList.pop(0)
-        # Get a random word from the mapping, given prevList
+        # Get a random word from the mapping, given prevLis
+        if(len(prevList) == 0):
+            prevList = ['wall']
         for k, v in self.mapping[self.toHashKey(prevList)].items():
             sum += v
             if sum >= index and retval == "":

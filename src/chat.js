@@ -12,7 +12,12 @@ function addChat() {
 
 	$.ajax({
 		url: ,
-		data: message,
+		type: "get",
+		data: {'message': message},
+		success: function(data,status) {
+			var thisHTML = '<div class="message trump">' + data + '</div>';
+			document.getElementById('chat-box').innerHTML += thisHTML;
+		}
 		
 	});
 	
