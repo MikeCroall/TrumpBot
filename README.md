@@ -6,3 +6,4 @@ Goals
 + Automatically determine Donald Trump's style via tweet analysis (TensorFlow)
 + Text message wrapper for API calls (Twilio)
 + Web wrapper for API calls
++ Android App wrapper for API calls (eventually...)
