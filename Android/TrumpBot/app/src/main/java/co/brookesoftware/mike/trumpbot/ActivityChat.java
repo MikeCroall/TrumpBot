@@ -58,7 +58,7 @@ public class ActivityChat extends AppCompatActivity {
                     addMessageToList(getString(R.string.You), message);
 
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url = "http://www.google.com";
+                    String url = "http://32d4b85d.ngrok.io/response";
                     String uri = String.format("%1$s?q=%2$s",
                             url,
                             message);
@@ -66,18 +66,16 @@ public class ActivityChat extends AppCompatActivity {
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    addMessageToList("TrumpBot", response);
+                                    addMessageToList(getString(R.string.app_name), response);
                                 }
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            addMessageToList("TrumpBot", "I'm broken! That didn't work!");
+                            addMessageToList(getString(R.string.app_name), "WROOONG!\n\nSeriously though, this means something broke.");
                         }
                     });
-                    //queue.add(stringRequest);
+                    queue.add(stringRequest);
                 }
-
-                addMessageToList(getString(R.string.app_name), "WROOONG!");
             }
         });
     }
@@ -91,13 +89,13 @@ public class ActivityChat extends AppCompatActivity {
         lstMessages.setSelection(chatListAdapter.getCount() - 1);
     }
 
-    private void showShortToast(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+    public void showShortToast(String msg) {
+        Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    private void showLongToast(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showLongToast(String msg) {
+        Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG);
         toast.show();
     }
 
