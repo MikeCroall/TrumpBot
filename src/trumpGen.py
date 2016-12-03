@@ -5,7 +5,7 @@ from six.moves import urllib
 import tflearn
 from tflearn.data_utils import *
 
-class TrumpGenerator(Object):
+class TrumpGenerator(object):
 	def __init__(self):
 		self.maxLength = 10
 
