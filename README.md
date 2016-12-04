@@ -52,4 +52,4 @@ $ python3 phone.py
 This will run the phone server. Then enter the URI of the phone server in the section called 'Web Hooks' on Twilio.
 
 ###Download the App
-The Android app is now available on the play store! You can find it by searching for TrumpBot.
+The Android app is now available on the play store! You can find it [here](https://play.google.com/store/apps/details?id=co.brookesoftware.mike.trumpbot) or by searching for TrumpBot.
