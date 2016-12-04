@@ -3,12 +3,12 @@
 
 ###Goals
 + API that receives a string, returns a string response in the style of Donald Trump
-  * /response will return a Trump style statement.
-  * /response?q=Query will return Trump's thoughts on your Query
-+ Automatically determine Donald Trump's style via tweet analysis (TensorFlow)
-+ Text message wrapper for API calls (Twilio)
-+ Web wrapper for API calls
-+ Android App wrapper for API calls (eventually...)
+  * /response will return a Trump style statement. - Done
+  * /response?q=Query will return Trump's thoughts on your Query - Done
++ Automatically determine Donald Trump's style via tweet analysis (TensorFlow) - Not quite... see below
++ Text message wrapper for API calls (Twilio) - Done
++ Web wrapper for API calls - Done
++ Android App wrapper for API calls (eventually...) - Done
 
 API Functionality
 + Train Neural Network
@@ -40,3 +40,16 @@ Finally, run the script
 ```
 $ ./run.sh
 ```
+
+###Twilio
+To use Twilio, you will need to create an account, and go through all the Twilio sign up procedure (including gettting a phone number).
+
+Once you have done this, go to the phone.py script and enter the URI of the main bot server.
+
+```
+$ python3 phone.py
+```
+This will run the phone server. Then enter the URI of the phone server in the section called 'Web Hooks' on Twilio.
+
+###Download the App
+The Android app is now available on the play store! You can find it by searching for TrumpBot.
