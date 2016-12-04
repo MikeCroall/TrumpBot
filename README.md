@@ -14,15 +14,18 @@ API Functionality
 + Train Neural Network
 + getResponse : input string -> output string
 
+###Problems We Encountered
++ Tensorflow didn't seem to work, so after many hours of attempted (and failed) bug fixes, we switched from LSTM networks to simple Markov Chains.
++ Twitter has a limit on the number of tweets you can download. An alternative method of harvesting tweets was found.
+
 ###Dependencies
 + Python 3.5.2
 + Flask Python Package
-+ TensorFlow Python Package
 + Twython Python Package
-+ tflearn Python Package
 + h5py Python Package
 + scipy Python Package
 + Ngrok (temporary, for tunelling local server to the internet)
++ OhmGeek's fork of markov-sentence-generator (for generating the sentences)
 
 ###Running the bot
 On Linux, simply open terminal, navigate to the folder where `run.sh` is located
