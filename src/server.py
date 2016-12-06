@@ -4,6 +4,7 @@ import re
 import random
 import sys
 import string
+import os
 
 app = Flask(__name__)
 tg = None
@@ -12,7 +13,7 @@ stopList = ['a','an','and','are','as','at','be','by','for','from','has','he','in
 def run_on_start():
 	global tg
 	tg = TrumpGenerator(4)	
-	tg.train("tweets.txt")
+	tg.train("src/tweets.txt")
 
 @app.route('/')
 def root():
@@ -43,4 +44,5 @@ def processInput(inputStr):
 
 if __name__ == '__main__':
 	run_on_start()
-	app.run(host='0.0.0.0', port=3000)
+	port = int(os.environ.get("PORT",5000))
+	app.run(host='0.0.0.0', port=port)
