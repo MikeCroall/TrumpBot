@@ -48,3 +48,6 @@ if __name__ == '__main__':
 	run_on_start()
 	port = int(os.environ.get("PORT",5000))
 	app.run(host='0.0.0.0', port=port)
+	print('Server running on port: {}'.format(port))
+else:
+	print('Server not running! Thread name not __main__ !')
