@@ -23,11 +23,11 @@ class ChatListAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(ArrayList<String> data){
+    public void setData(ArrayList<String> data) {
         this.data = data.toArray(new String[data.size()]);
     }
 
-    public void setUserdata(ArrayList<String> data){
+    public void setUserdata(ArrayList<String> data) {
         this.userdata = data.toArray(new String[data.size()]);
     }
 
@@ -48,13 +48,11 @@ class ChatListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View vi = convertView;
-        if (vi == null) {
-            if (userdata[position].equals("TrumpBot")) {
-                vi = inflater.inflate(R.layout.trump_row, null);
-            } else {
-                vi = inflater.inflate(R.layout.row, null);
-            }
+        View vi;
+        if (userdata[position].equals("TrumpBot")) {
+            vi = inflater.inflate(R.layout.trump_row, null);
+        } else {
+            vi = inflater.inflate(R.layout.row, null);
         }
         TextView text = (TextView) vi.findViewById(R.id.text);
         text.setText(data[position]);

@@ -1,6 +1,11 @@
 package co.brookesoftware.mike.trumpbot;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,10 +21,7 @@ import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.InetAddress;
 import java.util.ArrayList;
 
 public class ActivityChat extends AppCompatActivity {
@@ -58,28 +60,44 @@ public class ActivityChat extends AppCompatActivity {
                     addMessageToList(getString(R.string.You), message);
 
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url = "http://www.google.com";
-                    String uri = String.format("%1$s?q=%2$s",
-                            url,
-                            message);
+                    String url = "https://trumpedupkicks.herokuapp.com/response";
+                    String uri = String.format("%1$s?q=%2$s", url, message);
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, uri,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    addMessageToList("TrumpBot", response);
+                                    addMessageToList(getString(R.string.app_name), response);
                                 }
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            addMessageToList("TrumpBot", "I'm broken! That didn't work!");
+                            addMessageToList(getString(R.string.app_name), "WROOONG!\n\n" +
+                                    "Seriously though, this is an error message." +
+                                    "Are you sure you're connected to the internet?");
                         }
                     });
-                    //queue.add(stringRequest);
+                    queue.add(stringRequest);
                 }
-
-                addMessageToList(getString(R.string.app_name), "WROOONG!");
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!isNetworkAvailable()) {
+            new AlertDialog.Builder(ActivityChat.this)
+                    .setTitle("No Internet")
+                    .setMessage("We couldn't find an active internet connection. " +
+                            "Please double check your connection and try again!")
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
     }
 
     private void addMessageToList(String sender, String message) {
@@ -91,13 +109,20 @@ public class ActivityChat extends AppCompatActivity {
         lstMessages.setSelection(chatListAdapter.getCount() - 1);
     }
 
-    private void showShortToast(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    public void showShortToast(String msg) {
+        Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    private void showLongToast(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+    public void showLongToast(String msg) {
+        Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG);
         toast.show();
     }
 
