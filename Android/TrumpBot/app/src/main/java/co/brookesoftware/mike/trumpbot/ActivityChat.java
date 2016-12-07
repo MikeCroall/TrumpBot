@@ -60,7 +60,7 @@ public class ActivityChat extends AppCompatActivity {
                     addMessageToList(getString(R.string.You), message);
 
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url = "http://32d4b85d.ngrok.io/response";
+                    String url = "https://trumpedupkicks.herokuapp.com/response";
                     String uri = String.format("%1$s?q=%2$s", url, message);
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, uri,
                             new Response.Listener<String>() {
@@ -72,8 +72,8 @@ public class ActivityChat extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             addMessageToList(getString(R.string.app_name), "WROOONG!\n\n" +
-                                    "Seriously though, this means something broke. " +
-                                    "Are you still connected to the internet?");
+                                    "Seriously though, this is an error message." +
+                                    "Are you sure you're connected to the internet?");
                         }
                     });
                     queue.add(stringRequest);
