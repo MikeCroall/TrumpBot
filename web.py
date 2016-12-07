@@ -15,7 +15,7 @@ stopList = ['a','an','and','are','as','at','be','by','for','from','has','he','in
 def run_on_start():
 	global tg
 	tg = TrumpGenerator(4)	
-	tg.train("src/tweets.txt")
+	tg.train("tweets.txt")
 
 @app.route('/')
 def root():
