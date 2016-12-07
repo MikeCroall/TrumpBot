@@ -3,7 +3,6 @@
 
 ### Download the App (Android 4.3+)
 The Android app is now available on the play store! You can find it [here](https://play.google.com/store/apps/details?id=co.brookesoftware.mike.trumpbot) or by searching for TrumpBot.
-#### NOTE: Currently broken while the server is moving hosting
 
 ### Goals
 + API that receives a string, returns a string response in the style of Donald Trump
