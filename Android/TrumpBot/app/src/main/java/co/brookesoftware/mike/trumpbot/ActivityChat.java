@@ -9,22 +9,26 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.*;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.net.InetAddress;
 import java.util.ArrayList;
 
 public class ActivityChat extends AppCompatActivity {
+
+    static final String BASE_URL = "https://trumpedupkicks.herokuapp.com/response";
 
     EditText txtMessage;
     Button btnSend;
@@ -32,6 +36,7 @@ public class ActivityChat extends AppCompatActivity {
     ArrayList<String> messages;
     ArrayList<String> senders;
     ChatListAdapter chatListAdapter;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,8 @@ public class ActivityChat extends AppCompatActivity {
 
         lstMessages.setAdapter(chatListAdapter);
 
+        addMessageToList("Info", "Please wait while we wake up TrumpBot!");
+
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,9 +66,10 @@ public class ActivityChat extends AppCompatActivity {
                 if (!message.trim().isEmpty()) {
                     addMessageToList(getString(R.string.You), message);
 
-                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url = "https://trumpedupkicks.herokuapp.com/response";
-                    String uri = String.format("%1$s?q=%2$s", url, message);
+                    if(requestQueue == null) {
+                        requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    }
+                    String uri = String.format("%1$s?q=%2$s", BASE_URL, message);
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, uri,
                             new Response.Listener<String>() {
                                 @Override
@@ -72,14 +80,33 @@ public class ActivityChat extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             addMessageToList(getString(R.string.app_name), "WROOONG!\n\n" +
-                                    "Seriously though, this is an error message." +
+                                    "Seriously though, this is an error message. " +
                                     "Are you sure you're connected to the internet?");
                         }
                     });
-                    queue.add(stringRequest);
+                    requestQueue.add(stringRequest);
                 }
             }
         });
+    }
+
+    private void queryBaseApi() {
+        if(requestQueue == null) {
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+        requestQueue.add(
+                new StringRequest(Request.Method.GET, BASE_URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Server awake");
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("Server didn't respond");
+                    }
+                }
+                ));
     }
 
     @Override
@@ -97,6 +124,9 @@ public class ActivityChat extends AppCompatActivity {
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
+        } else {
+            // Wake up Heroku server
+            queryBaseApi();
         }
     }
 
