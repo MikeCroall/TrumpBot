@@ -1,4 +1,0 @@
-CK = "Cghex0kEDfMkibKppZb1LFF4r"
-CS = "YdU7yded2r9bKO2s158RGByBZnGxamenLs0S6tyYU52eMjy8d2"
-AT = "3497172732-zgqaCnhR3ZoagJwxLWugcJp2FgN6KqjUwW8vHTW"
-ATS = "qjjL532gQ5LBucEW1NRbg5b0sdU5XIuZzAeAOusMGpCOm"
