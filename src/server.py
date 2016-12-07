@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect, url_for
+from flask_cors import CORS, cross_origin
 from trumpGen import TrumpGenerator
 import re
 import random
@@ -7,6 +8,7 @@ import string
 import os
 
 app = Flask(__name__)
+CORS(app)
 tg = None
 stopList = ['a','an','and','are','as','at','be','by','for','from','has','he','in','is','it','its','of','on','that','the','to','was','were','will','with']
 
