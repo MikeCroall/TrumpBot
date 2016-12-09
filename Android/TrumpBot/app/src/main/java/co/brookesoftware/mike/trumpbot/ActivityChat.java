@@ -24,6 +24,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class ActivityChat extends AppCompatActivity {
@@ -69,7 +71,13 @@ public class ActivityChat extends AppCompatActivity {
                     if(requestQueue == null) {
                         requestQueue = Volley.newRequestQueue(getApplicationContext());
                     }
-                    String uri = String.format("%1$s?q=%2$s", BASE_URL, message);
+                    String query;
+                    try {
+                        query = URLEncoder.encode(message, "utf-8");
+                    } catch (UnsupportedEncodingException e) {
+                        query = message.split(" ")[0];
+                    }
+                    String uri = String.format("%1$s?q=%2$s", BASE_URL, query);
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, uri,
                             new Response.Listener<String>() {
                                 @Override
