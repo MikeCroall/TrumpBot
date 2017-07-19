@@ -4,18 +4,22 @@
 ### Download the App (Android 4.3+)
 The Android app is now available on the play store! You can find it [here](https://play.google.com/store/apps/details?id=co.brookesoftware.mike.trumpbot) or by searching for TrumpBot.
 
-### Goals
-+ API that receives a string, returns a string response in the style of Donald Trump
-  * /response will return a Trump style statement. - Done
-  * /response?q=Query will return Trump's thoughts on your Query - Done
-+ Automatically determine Donald Trump's style via tweet analysis (TensorFlow) - Not quite... see below
-+ Text message wrapper for API calls (Twilio) - Done
-+ Web wrapper for API calls - Done
-+ Android App wrapper for API calls (eventually...) - Done
+### Web Messenger
+A long long time after the hackathon, we eventually built a web version. We used Vue.js to create the application.
+Try it out [here](http://trumpbot.ohmgeek.co.uk)
+### TrumpBot API
+#### GET /
+Response: ```API Working```
 
-#### API Functionality
-+ Train Neural Network
-+ getResponse : input string -> output string
+This is just a test to determine whether the API is online.
+
+#### GET /response
+This will return a completely random sentence.
+
+You can customise it by sending a parameter:
+```
+?q=<SENTENCE>
+```
 
 ### Problems We Encountered
 + Tensorflow didn't seem to work, so after many hours of attempted (and failed) bug fixes, we switched from LSTM networks to simple Markov Chains.
@@ -53,3 +57,6 @@ Once you have done this, go to the phone.py script and enter the URI of the main
 $ python3 phone.py
 ```
 This will run the phone server. Then enter the URI of the phone server in the section called 'Web Hooks' on Twilio.
+
+## License
+This project is distributed under the MIT License. Feel free to adapt these components for another project!
