@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img id="banner" src="./assets/america_banner.jpg">
     <hello></hello>
   </div>
 </template>
@@ -17,6 +17,10 @@ export default {
 </script>
 
 <style>
+#banner {
+  max-height: 100px;
+  width: auto;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
