@@ -8,7 +8,7 @@
     </div>
     <form class="messagebox" action='/' @submit='sendMessage'>
       <input class="text-input-field" type='text' v-model="message" placeholder="Enter message here" />
-      <input type='submit' />
+      <input class="btn-submit" type='submit' />
     </form>
   </div>
 </template>
@@ -31,6 +31,10 @@ export default {
       var msg = {'text': response.data, 'isMyMessage': false}
       this.messages.push(msg)
     })
+  },
+  updated() {
+    var elem = this.$el;
+    elem.scrollTop = elem.clientHeight - 40;
   },
   methods: {
     sendMessage(event) {
@@ -62,9 +66,10 @@ export default {
 
 .message-list {
   display: block;
+
 }
 .messagebox {
-    background-color: darkblue;
+    background-color: #333355;
     width: 100%;
     height: 4rem;
     position: fixed;
@@ -77,6 +82,22 @@ export default {
 .text-input-field {
   margin-top: 1rem;
   font-size: 18px;
+  width: 60%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-sizing:border-box;
+}
+
+.btn-submit {
+  font-size: 14pt;
+  background-color: #f44336;
+  border: none;
+  margin-left: 10px;
+  padding: 15px 20px;
+  text-align: center;
+  display: inline-block;
 }
 .spacer {
   height: 200px;

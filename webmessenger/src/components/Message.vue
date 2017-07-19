@@ -28,13 +28,20 @@ export default {
   width: 60%;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: red;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: darkred;
+  font-family: sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  font-variant: small-caps;
 }
 
 .me {
   float: right;
   background-color: green;
-
+  font-weight: normal;
+  font-variant: normal;
 }
 
 
