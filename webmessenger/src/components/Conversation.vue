@@ -3,6 +3,9 @@
     <div class="message-list">
       <message v-for="message in messages" :content="message.text" :isMyMessage="message.isMyMessage"></message>
     </div>
+    <div class="spacer">
+
+    </div>
     <form class="messagebox" action='/' @submit='sendMessage'>
       <input class="text-input-field" type='text' v-model="message" placeholder="Enter message here" />
       <input type='submit' />
@@ -61,7 +64,7 @@ export default {
   display: block;
 }
 .messagebox {
-    background-color: blue;
+    background-color: darkblue;
     width: 100%;
     height: 4rem;
     position: fixed;
@@ -70,8 +73,14 @@ export default {
 .conversation {
   overflow-y: auto;
 }
+
 .text-input-field {
   margin-top: 1rem;
   font-size: 18px;
+}
+.spacer {
+  height: 200px;
+  width: 100%
+
 }
 </style>

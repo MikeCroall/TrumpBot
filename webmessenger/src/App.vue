@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <h1>Chat to TrumpBot</h1>
+    <div class="header">
+      <h1>Chat to TrumpBot</h1>
+      <p>
+        Created by <a href="https://ohmgeek.co.uk">Ryan Collins</a> and <a href="http://mikecroall.me">Mike Croall</a>
+      </p>
+    </div>
+
     <conversation></conversation>
   </div>
 </template>
@@ -37,16 +43,21 @@ body {
     height: 100%;
     /* Center and scale the image nicely */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
-h1 {
+.header {
     background-color: black;
+    margin-top: -30px;
     margin-left: 20%;
     margin-right: 20%;
     padding-top: 10px;
     padding-bottom: 10px;
-    
+
+}
+a {
+  color: white;
+
 }
 </style>
