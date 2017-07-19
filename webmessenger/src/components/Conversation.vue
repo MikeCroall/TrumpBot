@@ -1,8 +1,8 @@
 <template>
   <div class="conversation">
     <message v-for="message in messages" :content="message.text"></message>
-    <form action='/' @submit='sendMessage'>
-      <input type='text' v-model="message" placeholder="Enter message here" />
+    <form class="messagebox" action='/' @submit='sendMessage'>
+      <input class="text-input-field" type='text' v-model="message" placeholder="Enter message here" />
       <input type='submit' />
     </form>
   </div>
@@ -45,6 +45,8 @@ export default {
         this.messages.push(msg)
       });
 
+      // finally clear the textbox.
+      this.message = ""
     }
   }
 }
@@ -52,5 +54,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.messagebox {
+    background-color: green;
+    width: 100%;
+    height: 4rem;
+    position: fixed;
+    bottom: 0;
+}
+.conversation {
+  overflow-y: auto;
+}
+.text-input-field {
+  margin-top: 1rem;
+  font-size: 18px;
+}
 </style>

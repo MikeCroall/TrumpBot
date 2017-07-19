@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-    <p>
+    <p class="trump">
       {{ content }}
     </p>
   </div>
@@ -15,8 +15,8 @@ export default {
 </script>
 
 <style scoped>
-.p {
-
+p .trump {
+  
 }
 
 </style>
