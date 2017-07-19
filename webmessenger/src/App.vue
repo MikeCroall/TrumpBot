@@ -3,7 +3,8 @@
     <div class="header">
       <h1>Chat to TrumpBot</h1>
       <p>
-        Created by <a href="https://ohmgeek.co.uk">Ryan Collins</a> and <a href="http://mikecroall.me">Mike Croall</a>
+        Created by <a href="https://ohmgeek.co.uk">Ryan Collins</a> and <a href="http://mikecroall.me">Mike Croall</a><br />
+        More information about the project <a href="https://github.com/MikeCroall/TrumpBot">here</a>.
       </p>
     </div>
 
