@@ -1,9 +1,10 @@
 <template>
   <div class="conversation">
     <message v-for="message in messages" :content="message.text"></message>
-    <!-- <form action='/' @submit='sendMessage'>
-      <input type='text' v-model="message" placeholder="Enter message here"
-    </form> -->
+    <form action='/' @submit='sendMessage'>
+      <input type='text' v-model="message" placeholder="Enter message here" />
+      <input type='submit' />
+    </form>
   </div>
 </template>
 
@@ -30,8 +31,20 @@ export default {
     sendMessage(event) {
       event.preventDefault()
 
-      // send message
+      // log message for DEBUG
       console.log(this.message)
+      var msg = {'text': this.message, 'isTrumpMessage': false}
+      this.messages.push(msg)
+      // now send to the API
+      axios.get(TRUMPBOT_URL, {
+        params: {
+          q: this.message
+        }
+      }).then((response) => {
+        var msg = {'text': response.data, 'isTrumpMessage': true}
+        this.messages.push(msg)
+      });
+
     }
   }
 }
