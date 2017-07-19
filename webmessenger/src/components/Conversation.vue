@@ -1,6 +1,8 @@
 <template>
   <div class="conversation">
-    <message v-for="message in messages" :content="message.text"></message>
+    <div class="message-list">
+      <message v-for="message in messages" :content="message.text" :isMyMessage="message.isMyMessage"></message>
+    </div>
     <form class="messagebox" action='/' @submit='sendMessage'>
       <input class="text-input-field" type='text' v-model="message" placeholder="Enter message here" />
       <input type='submit' />
@@ -23,7 +25,7 @@ export default {
   created() {
     axios.get(TRUMPBOT_URL)
     .then((response) => {
-      var msg = {'text': response.data}
+      var msg = {'text': response.data, 'isMyMessage': false}
       this.messages.push(msg)
     })
   },
@@ -33,7 +35,7 @@ export default {
 
       // log message for DEBUG
       console.log(this.message)
-      var msg = {'text': this.message, 'isTrumpMessage': false}
+      var msg = {'text': this.message, 'isMyMessage': true}
       this.messages.push(msg)
       // now send to the API
       axios.get(TRUMPBOT_URL, {
@@ -41,7 +43,7 @@ export default {
           q: this.message
         }
       }).then((response) => {
-        var msg = {'text': response.data, 'isTrumpMessage': true}
+        var msg = {'text': response.data, 'isMyMessage': false}
         this.messages.push(msg)
       });
 
@@ -54,8 +56,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.message-list {
+  display: block;
+}
 .messagebox {
-    background-color: green;
+    background-color: blue;
     width: 100%;
     height: 4rem;
     position: fixed;
